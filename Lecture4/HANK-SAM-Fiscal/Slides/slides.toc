@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Model}{4}{0}{1}
+\beamer@sectionintoc {2}{Model mechanism}{10}{0}{2}
+\beamer@sectionintoc {3}{Calibration}{16}{0}{3}
+\beamer@sectionintoc {4}{Results}{19}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{26}{0}{5}

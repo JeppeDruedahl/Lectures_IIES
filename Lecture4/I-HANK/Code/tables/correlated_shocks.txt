@@ -1,0 +1,10 @@
+\begin{tabular}{lrrr}
+\toprule
+ & $\frac{\text{var}(Y)}{\text{var}(Y^{\text{data}})}$ & $\frac{\text{var}(C)}{\text{var}(C^{\text{data}})}$ & $\frac{\text{cov}(C,Y)}{\text{cov}(C^{\text{data}},Y^{\text{data}})}$\vspace{1mm} \\
+\midrule
+\textbf{HANK}: Foreign demand & 1.17 & 0.59 & 0.73 \\
++ Domestic demand & 1.28 & 1.00 & 1.05 \\
+\textbf{RANK}: Foreign Demand & 0.73 & 0.10 & -0.08 \\
++ Domestic demand & 0.85 & 1.00 & 0.68 \\
+\bottomrule
+\end{tabular}

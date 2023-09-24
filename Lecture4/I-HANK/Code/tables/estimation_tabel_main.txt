@@ -1,0 +1,14 @@
+$\theta^P_T$ & Rotemberg price parameter & 0.07 & - \\
+$\theta^P_{NT}$ & Rotemberg price parameter & 0.07 & - \\
+$\theta^W_T$ & Rotemberg wage parameter & 0.05 & - \\
+$\theta^W_{NT}$ & Rotemberg wage parameter & 0.00 & - \\
+$\varpi$ & Inflation indexation & 0.66 & - \\
+$\varpi^W$ & Wage indexation & 0.81 & - \\
+$\phi^\pi$ & Taylor coeff. on inflation & 1.34 & - \\
+$\rho^r$ & Interest rate smoothing & 0.14 & - \\
+$\phi^{N}$ & Employtment adj. cost & 1.79 & - \\
+$\phi^{I}$ & Investment adj. cost & 5.58 & - \\
+$\kappa^{I}$ & Investment risk-premium elasticity & 0.29 & - \\
+$\phi^{B^*}$ & UIP deviation & 1.11 & - \\
+$\eta^*$ & Armington elasticity & 2.98 & - \\
+$\rho^{*}$ & Dynamic export elasticity & 0.78 & - \\
