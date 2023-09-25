@@ -995,7 +995,7 @@ More similar to standard approaches for RBC and NK models
 \end_layout
 
 \begin_layout Enumerate
-Pro: Easier path to 2nd order approximation
+Easier path to 2nd and higher order approximations
 \end_layout
 
 \end_deeper
@@ -1453,7 +1453,7 @@ From the simulation, or
 From the IRFs, 
 \begin_inset Formula 
 \[
-\text{var}(dC_{t})=\sum_{i}\sigma_{i}^{2}\sum_{s=0}^{i}\left(dC_{s}^{i}\right)^{2}
+\text{var}(dC_{t})=\sum_{i}\sigma_{i}^{2}\sum_{s=0}^{T}\left(dC_{s}^{i}\right)^{2}
 \]
 
 \end_inset
@@ -1525,6 +1525,14 @@ For a new set of parameters?
 \end_layout
 
 \begin_deeper
+\begin_layout Enumerate
+Only shock processes change 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ same Jacobians
+\end_layout
+
 \begin_layout Enumerate
 Only need to re-compute Jacobian of aggregate variables?
 \end_layout
@@ -1614,8 +1622,8 @@ More moments: Covariances
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\text{cov}(dC_{t},dC_{t+1}) & =\sum_{i}\sigma_{i}^{2}\sum_{s=0}^{i}dC_{s}^{i}dC_{s+1}^{i}\\
-\text{cov}(dC_{t},dY_{t}) & =\sum_{i}\sigma_{i}^{2}\sum_{s=0}^{i}dC_{s}^{i}dT_{s}^{i}
+\text{cov}(dC_{t},dC_{t+1}) & =\sum_{i}\sigma_{i}^{2}\sum_{s=0}^{T}dC_{s}^{i}dC_{s+1}^{i}\\
+\text{cov}(dC_{t},dY_{t}) & =\sum_{i}\sigma_{i}^{2}\sum_{s=0}^{T}dC_{s}^{i}dY_{s}^{i}
 \end{align*}
 
 \end_inset
@@ -1836,7 +1844,7 @@ New Keynesian Wage (Phillips) Curve
  (NKWPC or NKWC)
 \begin_inset Formula 
 \[
-\pi_{t}^{w}=\kappa\left(\varphi\left(L_{t}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{w}
+\pi_{t}^{w}=\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{w}
 \]
 
 \end_inset
@@ -1897,7 +1905,7 @@ T_{t}=\int\tau_{t}w_{t}\ell_{t}z_{t}d\boldsymbol{D}_{t}=\tau_{t}\Gamma_{t}L_{t}=
 \end_layout
 
 \begin_layout Itemize
-
+If: 
 \series bold
 One-period bonds:
 \series default
@@ -1913,7 +1921,7 @@ B_{t} & =(1+r_{t}^{b})B_{t-1}+G_{t}+\chi_{t}-T_{t}
 \end_layout
 
 \begin_layout Itemize
-
+If: 
 \series bold
 Long-term bonds:
 \series default
@@ -2103,8 +2111,8 @@ Long-term
 \begin{align*}
 \frac{1+\delta q_{t+1}}{q_{t}} & =1+r_{t}\\
 1+r_{t}^{b}=1+r_{t}^{a} & =\frac{1+\delta q_{t}}{q_{t-1}}=\begin{cases}
-1+r_{t-1} & \text{for }t>0\\
-\frac{1+\delta q_{0}}{q_{-1}} & \text{for }t>0
+\frac{1+\delta q_{0}}{q_{-1}} & \text{if }t=0\\
+1+r_{t-1} & \text{else}
 \end{cases}
 \end{align*}
 
@@ -2367,7 +2375,7 @@ Simplifies to
  
 \begin_inset Formula 
 \[
-C_{t}^{hh}=C^{hh}\left(\{Y_{s}-T_{s}\}_{s\geq t}\right)=C^{hh}(\boldsymbol{Y}-\boldsymbol{T})
+C_{t}^{hh}=C^{hh}\left(\{Y_{s}-T_{s}\}_{s\geq0}\right)=C^{hh}(\boldsymbol{Y}-\boldsymbol{T})
 \]
 
 \end_inset
@@ -2447,6 +2455,14 @@ vspace{-7mm}
 
 
 \series bold
+First equation:
+\series default
+ Good market clearing
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 Second equation: 
 \end_layout
 
@@ -2466,7 +2482,7 @@ Government:
 \begin_layout Enumerate
 
 \series bold
-Goods market clearing:
+Resource constraint:
 \series default
  
 \begin_inset Formula $\boldsymbol{G},\boldsymbol{Y}\rightarrow\boldsymbol{C}$
@@ -2743,7 +2759,7 @@ Total differentiate:
 \begin_inset Formula 
 \begin{align*}
 dY_{t} & =dG_{t}+\frac{\partial C_{t}^{hh}}{\partial Z_{t}}(dY_{t}-dT_{t})\\
- & =dG_{t}+\text{mpc}(dY_{t}-dT_{t})
+ & =dG_{t}+\text{mpc}\cdot(dY_{t}-dT_{t})
 \end{align*}
 
 \end_inset
@@ -3123,7 +3139,7 @@ Cummulative-multiplier:
 
 \begin_inset Formula 
 \[
-\frac{\sum_{t=0}^{\infty}(1+r_{ss})^{-1}dY_{t}}{\sum_{t=0}^{\infty}(1+r_{ss})^{-1}dG_{t}}
+\frac{\sum_{t=0}^{\infty}(1+r_{ss})^{-t}dY_{t}}{\sum_{t=0}^{\infty}(1+r_{ss})^{-t}dG_{t}}
 \]
 
 \end_inset
@@ -3295,7 +3311,7 @@ d\boldsymbol{Y}=d\tilde{\boldsymbol{G}_{t}}=d\boldsymbol{G}_{t}+\frac{\lambda}{1
 \end_layout
 
 \begin_layout Itemize
-Still a cummulative multiplier is 
+Still a cumulative multiplier of 
 \begin_inset Formula $1$
 \end_inset
 
@@ -5464,7 +5480,11 @@ Exchange Rates and Monetary Policy with Heterogeneous Agents: Sizing up
 
 \begin_layout Standard
 Druedahl et al.
- (2022), 
+ (2022),
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes ald
 \end_inset
 
@@ -5487,7 +5507,11 @@ HANK-SAM:
 
 Broer et.
  al.
- (2023), 
+ (2023),
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes ald
 \end_inset
 
