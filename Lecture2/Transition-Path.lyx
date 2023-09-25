@@ -3541,6 +3541,18 @@ Sufficient statistic for value and policy functions
 \end_layout
 
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
 
 \series bold
 Computation:
@@ -3727,9 +3739,37 @@ Result:
 \series bold
 Intuition:
 \series default
- ???
+ Effect of news of shock regarding period 
+\begin_inset Formula $s$
+\end_inset
+
+ announced in period 
+\begin_inset Formula $0$
+\end_inset
+
+ and retracted in period 
+\begin_inset Formula $1$
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $t=0$
+\end_inset
+
+: Effect directly through change in policy
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $t=1$
+\end_inset
+
+: Effect indirectly though change in distribution
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
