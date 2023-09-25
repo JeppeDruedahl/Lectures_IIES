@@ -958,7 +958,7 @@ Decomposition:
 
 \begin_inset Formula 
 \[
-\boldsymbol{H}_{\boldsymbol{K}}=\boldsymbol{I}-\left(\mathcal{J}^{A^{hh},r}\mathcal{J}^{r,K}+\mathcal{J}^{A^{hh},r}\mathcal{J}^{w,K}\right)
+\boldsymbol{H}_{\boldsymbol{K}}=\boldsymbol{I}-\left(\mathcal{J}^{A^{hh},r}\mathcal{J}^{r,K}+\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K}\right)
 \]
 
 \end_inset
@@ -1456,7 +1456,7 @@ Aggregate consumption and savings:
 \begin_inset Formula 
 \begin{align*}
 X_{t}^{hh} & =\int x_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}\text{ for }x\in\{a,\ell,c\}\\
- & =X^{hh}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t},\underline{\boldsymbol{D}}_{0}\right)\\
+ & =X^{hh}\left(\left\{ r_{t},w_{t}\right\} _{t\geq0},\underline{\boldsymbol{D}}_{0}\right)\\
  & =\boldsymbol{x}_{t}^{*\prime}\boldsymbol{D}_{t}
 \end{align*}
 
@@ -2048,7 +2048,7 @@ Truncation:
 status open
 
 \begin_layout Plain Layout
-Use Broyden's method?
+Use Broyden's method
 \end_layout
 
 \end_inset
@@ -2079,7 +2079,7 @@ Calculate the steady state Jacobian
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}(\boldsymbol{\Gamma},\boldsymbol{K}^{i},K_{-1})$
+\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}(\boldsymbol{K}^{i},\boldsymbol{\Gamma}_{ss},K_{-1})$
 \end_inset
 
 
@@ -3716,28 +3716,7 @@ Main result
 \begin_layout Itemize
 
 \series bold
-Result:
-\series default
- Tedious algebra imply the Jacobian can be constructed from the known objects
- as
-\begin_inset Formula 
-\begin{align*}
-\mathcal{F}_{t,s}^{,i,o} & \equiv\begin{cases}
-\mathcal{Y}_{0,s}^{o,i} & t=0\\
-\left(\mathcal{E}_{t-1}^{o}\right)^{\prime}\underline{\mathcal{D}}_{1,s}^{i} & t\geq1
-\end{cases}\\
-\mathcal{J}_{t,s}^{hh,i,o} & =\sum_{k=0}^{\min\{t,s\}}\mathcal{F}_{t-k,s-k}^{i,o}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Intuition:
+Fake news:
 \series default
  Effect of news of shock regarding period 
 \begin_inset Formula $s$
@@ -3752,10 +3731,32 @@ Intuition:
 \end_inset
 
 
+\begin_inset Formula 
+\[
+\mathcal{F}_{t,s}^{,i,o}\equiv\begin{cases}
+\mathcal{Y}_{0,s}^{o,i} & t=0\\
+\left(\mathcal{E}_{t-1}^{o}\right)^{\prime}\underline{\mathcal{D}}_{1,s}^{i} & t\geq1
+\end{cases}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[]
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $t=0$
 \end_inset
 
@@ -3763,13 +3764,40 @@ Intuition:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $t=1$
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $t\geq1$
 \end_inset
 
 : Effect indirectly though change in distribution
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\series bold
+Result:
+\series default
+ Tedious algebra imply the Jacobian can be constructed as
+\begin_inset Formula 
+\begin{align*}
+\mathcal{J}_{t,s}^{hh,i,o} & =\sum_{k=0}^{\min\{t,s\}}\mathcal{F}_{t-k,s-k}^{i,o}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
 \series bold

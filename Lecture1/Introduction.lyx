@@ -6381,7 +6381,7 @@ Aggregate consumption and savings:
 \begin_inset Formula 
 \begin{align*}
 X_{t}^{hh} & =\int x_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}\text{ for }x\in\{a,\ell,c\}\\
- & =X^{hh}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t},\underline{\boldsymbol{D}}_{0}\right)\\
+ & =X^{hh}\left(\left\{ r_{t},w_{t}\right\} _{t\geq0},\underline{\boldsymbol{D}}_{0}\right)\\
  & =\boldsymbol{x}_{t}^{*\prime}\boldsymbol{D}_{t}
 \end{align*}
 

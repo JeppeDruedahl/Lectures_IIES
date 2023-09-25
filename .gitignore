@@ -160,5 +160,5 @@ cython_debug/
 #.idea/
 
 # misc
-.lyx#
-.lyx~
+*.lyx#
+*.lyx~
