@@ -14,7 +14,7 @@ class HANCGovModelClass(EconModelClass,GEModelClass):
         # a. namespaces (typically not changed)
         self.namespaces = ['par','ini','ss','path','sim']
 
-        # not used today: .sim and .path
+        # not used today: .sim
         
         # b. household
         self.grids_hh = ['a'] # grids

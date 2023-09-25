@@ -128,8 +128,8 @@ class ConSavModelClass(EconModelClass):
         with jit(self) as model:
 
             par = model.par
-        
-        solve_hh_backwards_vfi(par,vbeg_plus,c_plus,vbeg,c,a)  
+
+            solve_hh_backwards_vfi(par,vbeg_plus,c_plus,vbeg,c,a)  
     
     def solve(self,do_print=True,algo='vfi'):
         """ solve model using value function iteration or egm """

@@ -9,7 +9,7 @@ import household_problem
 class HANCModelClass(EconModelClass,GEModelClass):    
 
     # remember in model = EconModelClass(name='') we call:
-    # self.settings()ba
+    # self.settings()
     # self.setup()
     # self.allocate()
 
@@ -31,9 +31,9 @@ class HANCModelClass(EconModelClass,GEModelClass):
         self.intertemps_hh = ['vbeg_a'] # intertemporal variables
 
         # c. GE
-        self.shocks = [] # exogenous shocks (not used today)
-        self.unknowns = [] # endogenous unknowns (not used today)
-        self.targets = [] # targets = 0 (not used today)
+        self.shocks = ['Gamma'] # exogenous shocks (not used today)
+        self.unknowns = ['K','L'] # endogenous unknowns (not used today)
+        self.targets = ['clearing_A','clearing_L'] # targets = 0 (not used today)
         self.blocks = [ # list of strings to block-functions
             'blocks.production_firm',
             'blocks.mutual_fund',

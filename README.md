@@ -4,7 +4,7 @@
 
 ## Lecturs 
 
-Course plan in `IIES_Lectures.pdf`
+Course plan in `Lectures_IIES.pdf`
 
 * **Lecture 1**. Recap of consumption-saving and stationary equilibrium
 * **Lecture 2**. Transitional dynamics in sequence space
@@ -16,7 +16,7 @@ Course plan in `IIES_Lectures.pdf`
 1. Using the numerical methods in practice
 2. In Python using my [GEModelTools](https://github.com/NumEconCopenhagen/GEModelTools) package
 
-See `Code_and_exercises`
+See `Code_and_exercises\`.
 
 ## Misc
 
@@ -27,4 +27,4 @@ Greatly inspired and influenced by Auclert, Bardóczy, Rognlie, Straub:
 
 Additional material in [Advanced Macroeconomics: Heterogenous Agent Models](https://sites.google.com/view/numeconcph-advmacrohet/)
 
-**State space methods:** See [BASE for HANK](https://github.com/BASEforHANK) by Bayer and Luetticke  
+**State space methods:** See [BASE for HANK](https://github.com/BASEforHANK) by Bayer and Luetticke
