@@ -646,7 +646,7 @@ first order solution
 \emph default
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1168,7 +1168,7 @@ status open
 \end_inset
 
 Calculate the time series of shocks as 
-\begin_inset Formula $d\tilde{\boldsymbol{Z}}_{t}=\sum_{s=0}^{t}d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}$
+\begin_inset Formula $d\tilde{\boldsymbol{Z}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}$
 \end_inset
 
 
@@ -1188,7 +1188,7 @@ status open
 Calculate the time series of other aggregate variables as 
 \begin_inset Formula 
 \[
-d\tilde{\boldsymbol{X}}_{t}=\sum_{s=0}^{t}d\boldsymbol{X}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}
+d\tilde{\boldsymbol{X}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{X}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}
 \]
 
 \end_inset
@@ -1304,7 +1304,7 @@ status open
 \series bold
 Generality:
 \series default
- Extend the model with auxiliary variables (incl.
+ Add auxiliary variables (incl.
  distributional moments) to calculate additional IRFs and simulations
 \series bold
  
@@ -1363,6 +1363,19 @@ where
 \end_inset
 
  (calculated in fake news algorithm)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1379,7 +1392,7 @@ status open
 The policy function can there be simulated as
 \begin_inset Formula 
 \[
-\boldsymbol{a}_{i_{g},t}^{\ast}=\sum_{s=0}^{t}da_{i_{g},s}^{\ast}\tilde{\boldsymbol{\epsilon}}_{t-s}
+\boldsymbol{a}_{i_{g},t}^{\ast}=\sum_{s=0}^{T-1}da_{i_{g},s}^{\ast}\tilde{\boldsymbol{\epsilon}}_{t-s}
 \]
 
 \end_inset
@@ -1450,10 +1463,23 @@ From the simulation, or
 \end_layout
 
 \begin_layout Enumerate
-From the IRFs, 
+From the IRFs,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
-\text{var}(dC_{t})=\sum_{i}\sigma_{i}^{2}\sum_{s=0}^{T}\left(dC_{s}^{i}\right)^{2}
+\text{var}(dC_{t})=\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1}\left(dC_{s}^{i}\right)^{2}
 \]
 
 \end_inset
@@ -1505,7 +1531,30 @@ status open
 
 
 \series bold
-Also work for covariances, correlations etc.
+Covariances:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{cov}(dX_{t},dY_{t+k}) & =\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{i}dY_{s+k}^{i}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1520,29 +1569,78 @@ status open
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
 \series bold
-For a new set of parameters?
+Covariance decomposition:
+\series default
+
+\begin_inset Formula 
+\[
+\frac{\sigma_{j}^{2}\sum_{s=0}^{T-1-k}dX_{s}^{j}dY_{s+k}^{j}}{\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dX_{s}^{i}dY_{s+k}^{i}}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+The simplest approaches:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Only shock processes change 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- same Jacobians
+Impulse Response Function (IRF) matching
 \end_layout
 
 \begin_layout Enumerate
-Only need to re-compute Jacobian of aggregate variables?
-\end_layout
-
-\begin_layout Enumerate
-Also need to re-compute Jacobian of household problem?
-\end_layout
-
-\begin_layout Enumerate
-Also need to find stationary equilibrium again?
+Minimum distance / simulated method of methods (SMM)
 \end_layout
 
 \end_deeper
@@ -1559,9 +1657,12 @@ status open
 
 
 \series bold
-Speed-up: 
+Also possible: 
 \series default
-Use Fast Fourier Transform (FFT), see 
+\emph on
+Bayesian likelihood estimation 
+\emph default
+(see 
 \begin_inset ERT
 status open
 
@@ -1594,43 +1695,67 @@ status open
 
 \end_inset
 
-
+)
 \end_layout
 
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
+\begin_layout Itemize
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-More moments: Covariances
+
+<+->
 \end_layout
 
 \end_inset
 
 
+\series bold
+Speed: 
+\series default
+For a new set of parameters?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Only shock processes change 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\emph on
+same Jacobians 
+\emph default
+(
+\begin_inset Formula $\boldsymbol{G}_{\boldsymbol{U}}$
+\end_inset
+
+,
+\begin_inset Formula $\boldsymbol{G}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Only need to re-compute Jacobian of aggregate variables?
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\text{cov}(dC_{t},dC_{t+1}) & =\sum_{i}\sigma_{i}^{2}\sum_{s=0}^{T}dC_{s}^{i}dC_{s+1}^{i}\\
-\text{cov}(dC_{t},dY_{t}) & =\sum_{i}\sigma_{i}^{2}\sum_{s=0}^{T}dC_{s}^{i}dY_{s}^{i}
-\end{align*}
-
-\end_inset
-
-
+(only single block?)
 \end_layout
 
+\end_deeper
+\begin_layout Enumerate
+Also need to re-compute Jacobian of household problem?
+\end_layout
+
+\begin_layout Enumerate
+Also need to find stationary equilibrium again?
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1894,6 +2019,19 @@ Tax bill:
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 T_{t}=\int\tau_{t}w_{t}\ell_{t}z_{t}d\boldsymbol{D}_{t}=\tau_{t}\Gamma_{t}L_{t}=\tau_{t}Y_{t}
@@ -1905,9 +2043,9 @@ T_{t}=\int\tau_{t}w_{t}\ell_{t}z_{t}d\boldsymbol{D}_{t}=\tau_{t}\Gamma_{t}L_{t}=
 \end_layout
 
 \begin_layout Itemize
-If: 
+If 
 \series bold
-One-period bonds:
+one-period bonds:
 \series default
 
 \begin_inset Formula 
@@ -1921,9 +2059,9 @@ B_{t} & =(1+r_{t}^{b})B_{t-1}+G_{t}+\chi_{t}-T_{t}
 \end_layout
 
 \begin_layout Itemize
-If: 
+If 
 \series bold
-Long-term bonds:
+long-term bonds:
 \series default
  Geometrically declining payment stream of 
 \begin_inset Formula $1,\delta,\delta^{2},\dots$
@@ -1954,6 +2092,19 @@ Potential
 \series bold
 tax-rule:
 \series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
 
 \begin_inset Formula 
 \[
@@ -2081,7 +2232,7 @@ r_{0}^{b}=r_{0}^{a} & =1+r_{ss}
 \end_layout
 
 \begin_layout Enumerate
-One-period 
+or, one-period 
 \emph on
 nominal
 \emph default
@@ -2102,7 +2253,7 @@ t>0:\,r_{0}^{b}=r_{0}^{a} & =\left(1+r_{ss}\right)\left(1+\pi_{ss}\right)/\left(
 \end_layout
 
 \begin_layout Enumerate
-Long-term 
+or, long-term 
 \emph on
 (real)
 \emph default
@@ -2189,6 +2340,7 @@ Equation system
 \end_layout
 
 \begin_layout Frame
+Taylor-rule and long-term government debt:
 \begin_inset ERT
 status open
 
@@ -2204,10 +2356,10 @@ footnotesize
 
 \begin_inset Formula 
 \[
-\boldsymbol{H}(\boldsymbol{\pi^{w}},\boldsymbol{L},\boldsymbol{G},\boldsymbol{\chi},\boldsymbol{\Gamma})=\left[\begin{array}{c}
+\left[\begin{array}{c}
 w_{t}-\Gamma_{t}\\
-1+\pi_{t}-\frac{1+\pi_{t}^{w}}{\Gamma_{t}/\Gamma_{t-1}}\\
 Y_{t}-\Gamma_{t}L_{t}\\
+1+\pi_{t}-\frac{1+\pi_{t}^{w}}{\Gamma_{t}/\Gamma_{t-1}}\\
 1+i_{t}-(1+i_{t-1})^{\rho_{i}}\left((1+r_{ss})\left(1+\pi_{t}\right)^{\phi_{\pi}}\right)^{1-\rho_{i}}\\
 1+r_{t}-\frac{1+i_{t}}{1+\pi_{t+1}}\\
 \frac{1+\delta q_{t+1}}{q_{t}}-(1+r_{t})\\
@@ -2218,6 +2370,87 @@ q_{t}B_{t}-A_{t}^{hh}\\
 \pi_{t}^{w}-\left[\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{W}\right]
 \end{array}\right]\boldsymbol{=0}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Reduced equation system with ordered blocks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-4mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boldsymbol{H}(\boldsymbol{\pi^{w}},\boldsymbol{L},\boldsymbol{G},\boldsymbol{\chi},\boldsymbol{\Gamma})=\left[\begin{array}{c}
+q_{t}B_{t}-A_{t}^{hh}\\
+\pi_{t}^{w}-\left[\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{W}\right]
+\end{array}\right]\boldsymbol{=0}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{Production: }w_{t} & =\Gamma_{t}\\
+Y_{t} & =\Gamma_{t}L_{t}\\
+\pi_{t} & =\frac{1+\pi_{t}^{w}}{\Gamma_{t}/\Gamma_{t-1}}-\pi_{t}\\
+\text{Central bank: }i_{t} & =(1+i_{t-1})^{\rho_{i}}\left((1+r_{ss})\left(1+\pi_{t}\right)^{\phi_{\pi}}\right)^{1-\rho_{i}}-1\text{ (forwards)}\\
+r_{t} & =\frac{1+i_{t}}{1+\pi_{t+1}}-1\\
+\text{Mutual fund: }q_{t} & =\frac{1+\delta q_{t+1}}{1+r_{t}}\text{ (backwards)}\\
+r_{t}^{a} & =\frac{1+\delta q_{t}}{q_{t-1}}-1\\
+\text{Government: }\left[\begin{array}{c}
+\tau_{t}\\
+B_{t}
+\end{array}\right] & =\left[\begin{array}{c}
+\tau_{ss}+\omega q_{ss}\frac{B_{t-1}-B_{ss}}{Y_{ss}}\\
+\frac{(1+\delta q_{t})B_{t-1}+G_{t}+\chi_{t}-\tau_{t}Y_{t}}{q_{_{t}}}
+\end{array}\right]\text{ (forwards)}
+\end{align*}
 
 \end_inset
 
@@ -2259,10 +2492,23 @@ centering
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename figs/DAG.png
 	lyxscale 30
-	width 70text%
+	width 80text%
 
 \end_inset
 
@@ -2347,7 +2593,7 @@ Fiscal policy in terms of
 
 \series bold
 Tax-bill: 
-\begin_inset Formula $T_{t}=\tau_{t}w_{t}\int\ell_{t}z_{t}d\boldsymbol{D}_{t}=\tau_{t}\Gamma_{t}L_{t}=\tau_{t}L_{t}$
+\begin_inset Formula $T_{t}=\tau_{t}w_{t}\int\ell_{t}z_{t}d\boldsymbol{D}_{t}=\tau_{t}\Gamma_{t}L_{t}=\tau_{t}Y_{t}$
 \end_inset
 
 
@@ -2359,7 +2605,7 @@ Tax-bill:
 Household income:
 \series default
  
-\begin_inset Formula $(1-\tau_{t})w_{t}\ell_{t}z_{t}=\left(Y_{t}-T_{t}\right)z_{t}$
+\begin_inset Formula $(1-\tau_{t})w_{t}\ell_{t}z_{t}=\underset{\equiv Z_{t}}{\underbrace{\left(Y_{t}-T_{t}\right)}}z_{t}=Z_{t}z_{t}$
 \end_inset
 
 
@@ -2375,7 +2621,7 @@ Simplifies to
  
 \begin_inset Formula 
 \[
-C_{t}^{hh}=C^{hh}\left(\{Y_{s}-T_{s}\}_{s\geq0}\right)=C^{hh}(\boldsymbol{Y}-\boldsymbol{T})
+C_{t}^{hh}=C^{hh}\left(\{Y_{s}-T_{s}\}_{s\geq0}\right)\Rightarrow\boldsymbol{C}^{hh}=C^{hh}(\boldsymbol{Y}-\boldsymbol{T})=C^{hh}(\boldsymbol{Z})
 \]
 
 \end_inset
@@ -2431,7 +2677,7 @@ vspace{-5mm}
 
 \begin_inset Formula 
 \begin{align*}
-\boldsymbol{Y} & =C^{hh}(\boldsymbol{r},\boldsymbol{Y}-\boldsymbol{T})+\boldsymbol{G}\\
+\boldsymbol{Y} & =\boldsymbol{G}+C^{hh}(\boldsymbol{r},\boldsymbol{Y}-\boldsymbol{T})\\
 \boldsymbol{r} & =\mathcal{R}\left(\boldsymbol{Y};\boldsymbol{G},\boldsymbol{T}\right)
 \end{align*}
 
@@ -2457,7 +2703,7 @@ vspace{-7mm}
 \series bold
 First equation:
 \series default
- Good market clearing
+ Goods market clearing
 \end_layout
 
 \begin_layout Itemize
@@ -2468,11 +2714,7 @@ Second equation:
 
 \begin_deeper
 \begin_layout Enumerate
-
-\series bold
-Government:
-\series default
- 
+Government: 
 \begin_inset Formula $\boldsymbol{T},\boldsymbol{Y}\rightarrow\boldsymbol{\tau}$
 \end_inset
 
@@ -2480,11 +2722,7 @@ Government:
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
-Resource constraint:
-\series default
- 
+Resource constraint: 
 \begin_inset Formula $\boldsymbol{G},\boldsymbol{Y}\rightarrow\boldsymbol{C}$
 \end_inset
 
@@ -2492,11 +2730,7 @@ Resource constraint:
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
-Firm behavior I:
-\series default
- 
+Firm behavior I: 
 \begin_inset Formula $\boldsymbol{\Gamma},\boldsymbol{Y}\rightarrow\boldsymbol{L},\boldsymbol{w}$
 \end_inset
 
@@ -2504,11 +2738,7 @@ Firm behavior I:
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
 NKWC: 
-\series default
-
 \begin_inset Formula $\boldsymbol{L},\boldsymbol{w},\boldsymbol{\tau}\rightarrow\boldsymbol{\pi^{w}}$
 \end_inset
 
@@ -2516,11 +2746,7 @@ NKWC:
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
-Firm behavior II:
-\series default
- 
+Firm behavior II: 
 \begin_inset Formula $\boldsymbol{\pi^{w}}\rightarrow\boldsymbol{\pi}$
 \end_inset
 
@@ -2528,11 +2754,7 @@ Firm behavior II:
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
-Central bank:
-\series default
- 
+Central bank: 
 \begin_inset Formula $\boldsymbol{\pi}\rightarrow\boldsymbol{i}$
 \end_inset
 
@@ -2540,11 +2762,7 @@ Central bank:
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
-Fisher:
-\series default
- 
+Fisher: 
 \begin_inset Formula $\boldsymbol{i},\boldsymbol{\pi}\rightarrow\boldsymbol{r}$
 \end_inset
 
@@ -2567,6 +2785,7 @@ Heterogeneity does not enter
 \series bold
 Real rate rule: 
 \series default
+\emph on
 Inflation is a side-show
 \end_layout
 
@@ -2608,7 +2827,7 @@ vspace{-5mm}
 
 \begin_inset Formula 
 \begin{align*}
-\boldsymbol{Y} & =C^{hh}(\boldsymbol{Y}-\boldsymbol{T})+\boldsymbol{G}
+\boldsymbol{Y} & =\boldsymbol{G}+C^{hh}(\boldsymbol{Y}-\boldsymbol{T})
 \end{align*}
 
 \end_inset
@@ -2617,6 +2836,18 @@ vspace{-5mm}
 \end_layout
 
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
 
 \series bold
 Total differentiation:
@@ -2639,6 +2870,19 @@ IBC implies:
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -2648,14 +2892,11 @@ IBC implies:
 Intertemporal Keynesian Cross 
 \series default
 in vector form
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
 \begin_inset Formula 
-\[
-d\boldsymbol{Y}=d\boldsymbol{G}-d\boldsymbol{T}+\boldsymbol{M}d\boldsymbol{Y}
-\]
+\begin{align*}
+d\boldsymbol{Y} & =d\boldsymbol{G}+\boldsymbol{M}\left(d\boldsymbol{Y}-d\boldsymbol{T}\right)\Leftrightarrow\\
+(\boldsymbol{I}-\boldsymbol{M})d\boldsymbol{Y} & =d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T}
+\end{align*}
 
 \end_inset
 
@@ -2663,12 +2904,11 @@ where
 \begin_inset Formula $M_{t,s}=\frac{\partial C_{t}^{hh}}{\partial Z_{s}}$
 \end_inset
 
- encodes entire 
+ encodes the entire 
 \emph on
 complexity
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2739,7 +2979,7 @@ Perspective: Static Keynesian Cross
 \series bold
 Old Keynesians:
 \series default
- Consumption only depend on current income
+ Consumption only depends on current income
 \begin_inset Formula 
 \begin{align*}
 Y_{t} & =G_{t}+C^{hh}(Y_{t}-T_{t})
@@ -2775,7 +3015,7 @@ Solution
  
 \begin_inset Formula 
 \[
-dY_{t}=\frac{1}{1-\text{mpc}}\left(dG_{t}-\text{mpc}dT_{t}\right)
+dY_{t}=\frac{1}{1-\text{mpc}}\left(dG_{t}-\text{mpc}\cdot dT_{t}\right)
 \]
 
 \end_inset
@@ -2845,21 +3085,20 @@ Intertemporal solution technicalities
 \begin_layout Itemize
 
 \series bold
-NPV-vector:
-\series default
- 
-\begin_inset Formula $\boldsymbol{q}=[1,(1+r_{ss})^{-1},(1+r_{ss})^{-2},\dots]^{\prime}$
+IBCs:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+NPV-vector: 
+\begin_inset Formula $\boldsymbol{q}\equiv[1,(1+r_{ss})^{-1},(1+r_{ss})^{-2},\dots]^{\prime}$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Household IBC:
-\series default
- 
+\begin_layout Enumerate
+Households: 
 \begin_inset Formula $\boldsymbol{q}^{\prime}\boldsymbol{M}=\boldsymbol{q}^{\prime}$
 \end_inset
 
@@ -2870,18 +3109,28 @@ Household IBC:
 
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Government IBC:
-\series default
- 
+\begin_layout Enumerate
+Government: 
 \begin_inset Formula $\boldsymbol{q}^{\prime}(d\boldsymbol{G}-d\boldsymbol{T})=\boldsymbol{0}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -2909,15 +3158,27 @@ because
 \end_layout
 
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
 
 \series bold
-Problem: 
+Result: 
 \series default
 If unique solution then on the form
 \begin_inset Formula 
 \begin{align*}
 d\boldsymbol{Y} & =\mathcal{M}(d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T})\\
-\mathcal{M} & =\left(\boldsymbol{K}(\boldsymbol{I}-\boldsymbol{M})\right)^{-1}\boldsymbol{K}
+ & \,\,\,\mathcal{M}=\left(\boldsymbol{K}(\boldsymbol{I}-\boldsymbol{M})\right)^{-1}\boldsymbol{K}
 \end{align*}
 
 \end_inset
@@ -2927,6 +3188,18 @@ d\boldsymbol{Y} & =\mathcal{M}(d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T})\\
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
 Indeterminancy: Still work-in-progress (Auclert et.
  al., 2023)
 \end_layout
@@ -2959,7 +3232,7 @@ Intermezzo: Response of consumption
 \begin{align*}
 d\boldsymbol{Y} & =d\boldsymbol{G}+\boldsymbol{M}(d\boldsymbol{Y}-d\boldsymbol{T})\Leftrightarrow\\
 d\boldsymbol{Y}-d\boldsymbol{G} & =\boldsymbol{M}(d\boldsymbol{G}-d\boldsymbol{T})+\boldsymbol{M}(d\boldsymbol{Y}-d\boldsymbol{G})\Leftrightarrow\\
-d\boldsymbol{Y}-d\boldsymbol{G} & =\mathcal{M}\boldsymbol{M}(d\boldsymbol{G}-d\boldsymbol{T})\Rightarrow\\
+d\boldsymbol{Y}-d\boldsymbol{G} & =\mathcal{M}\boldsymbol{M}(d\boldsymbol{G}-d\boldsymbol{T})\Leftrightarrow\\
 d\boldsymbol{C} & =\mathcal{M}\boldsymbol{M}(d\boldsymbol{G}-d\boldsymbol{T})
 \end{align*}
 
@@ -3044,8 +3317,8 @@ d\boldsymbol{G}=d\boldsymbol{T}\Rightarrow d\boldsymbol{Y}=d\boldsymbol{G},d\bol
 
 \begin_deeper
 \begin_layout Standard
-Note: Central that income and taxes affect household income in exactly the
- same way 
+Note: Central that income and taxes affect household income proportionally
+ in exactly the same way 
 \begin_inset Formula $=$
 \end_inset
 
@@ -3252,14 +3525,14 @@ Comparison with TA model
 \begin_layout Itemize
 
 \series bold
-Hands-too-Mouth (HtM) households:
+Hand-to-Mouth (HtM) households:
 \series default
  
 \begin_inset Formula $\lambda$
 \end_inset
 
  share have 
-\begin_inset Formula $C_{t}=Y_{t+s}^{hh}$
+\begin_inset Formula $C_{t}=Y_{t}^{hh}$
 \end_inset
 
 
@@ -3302,7 +3575,7 @@ Same solution-form as RA:
  
 \begin_inset Formula 
 \[
-d\boldsymbol{Y}=d\tilde{\boldsymbol{G}_{t}}=d\boldsymbol{G}_{t}+\frac{\lambda}{1-\lambda}\left[d\boldsymbol{G}-dT\right]
+d\boldsymbol{Y}=d\tilde{\boldsymbol{G}_{t}}=d\boldsymbol{G}_{t}+\frac{\lambda}{1-\lambda}\left[d\boldsymbol{G}-d\boldsymbol{T}\right]
 \]
 
 \end_inset
@@ -3485,7 +3758,7 @@ Generalized IKC
 
 \series bold
 Consumption-function 
-\begin_inset Formula $C_{t}^{hh}=C^{hh}(\boldsymbol{Y}-\boldsymbol{T},\boldsymbol{\chi},\boldsymbol{r},\text{cap}_{0})$
+\begin_inset Formula $\boldsymbol{C}^{hh}=C^{hh}(\boldsymbol{r},\boldsymbol{Y}-\boldsymbol{T},\boldsymbol{\chi},\text{cap}_{0})$
 \end_inset
 
  
@@ -3493,7 +3766,7 @@ Consumption-function
 implies
 \begin_inset Formula 
 \begin{align*}
-d\boldsymbol{C} & =\boldsymbol{M}(d\boldsymbol{Y}-d\boldsymbol{T})+\boldsymbol{M}^{\chi}d\boldsymbol{\chi}+\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{m}^{\text{cap}}\text{cap}_{0}
+d\boldsymbol{C}^{hh} & =\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}(d\boldsymbol{Y}-d\boldsymbol{T})+\boldsymbol{M}^{\chi}d\boldsymbol{\chi}+\boldsymbol{m}^{\text{cap}}\text{cap}_{0}
 \end{align*}
 
 \end_inset
@@ -3501,7 +3774,7 @@ d\boldsymbol{C} & =\boldsymbol{M}(d\boldsymbol{Y}-d\boldsymbol{T})+\boldsymbol{M
 where
 \begin_inset Formula 
 \[
-\boldsymbol{M}_{t,s}^{\chi}=\left[\frac{\partial C_{t}^{hh}}{\partial\chi_{s}}\right],\boldsymbol{M}_{t,s}^{r}=\left[\frac{\partial C_{t}^{hh}}{\partial r_{s}}\right],\boldsymbol{m}_{t}^{\text{cap}}=\left[\frac{\partial C_{t}^{hh}}{\partial\text{cap}_{0}}\right]
+\boldsymbol{M}_{t,s}^{r}=\left[\frac{\partial C_{t}^{hh}}{\partial r_{s}}\right],\boldsymbol{M}_{t,s}^{\chi}=\left[\frac{\partial C_{t}^{hh}}{\partial\chi_{s}}\right],\boldsymbol{m}_{t}^{\text{cap}}=\left[\frac{\partial C_{t}^{hh}}{\partial\text{cap}_{0}}\right]
 \]
 
 \end_inset
@@ -5442,6 +5715,19 @@ Intertemporal Keynesian Cross
 
 \begin_layout Enumerate
 Analysis of fiscal multipliers
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -5490,6 +5776,19 @@ Druedahl et al.
 
 The Transmission of Foreign Demand Shocks
 \begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
 \end_inset
 
 
