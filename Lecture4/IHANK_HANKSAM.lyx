@@ -1192,12 +1192,307 @@ Apply upper-envelope:
  
 \begin_inset Formula 
 \begin{align*}
-c^{\ast}(a^{i_{a-}}) & =\max_{i_{a}\in\{0,1,\dots\#_{a}-2\}}u^{\prime}\left(c^{i_{a-}}\right)+w^{i_{a-}}\text{ s.t.}\\
+c^{\ast}(a^{i_{a-}}) & =\max_{i_{a}\in\{0,1,\dots\#_{a}-2\}}u\left(c^{i_{a-}}\right)+w^{i_{a-}}\text{ s.t.}\\
 m^{i_{a-}} & =(1+r_{t})a^{i_{a-}}+w_{t}z^{i_{z}}\in\left[m^{i_{a}},m^{i_{a+}}\right]\\
 c^{i_{a-}} & =\min\left\{ c^{i_{a}}+\frac{c^{i_{a}+1}-c^{i_{a}}}{m^{i_{a}+1}-m^{i_{a}}}\left(m^{i_{a-}}-m^{i_{a}}\right),m^{i_{a-}}\right\} \\
 a^{i_{a-}} & =m^{i_{a-}}-c^{i_{a-}}\\
 w^{i_{a-}} & =w^{i_{a}}+\frac{w^{i_{a}+1}-w^{i_{a}}}{a^{i_{a}+1}-a^{i_{a}}}\left(a^{i_{a-}}-a^{i_{a}}\right)
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/upper_envelope.png
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-6mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Numbering:
+\series default
+ Different levels of end-of-period assets, 
+\begin_inset Formula $a^{i_{a}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Problem:
+\series default
+ Find the consumption function at 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $m_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Largest value-of-choice:
+\series default
+ Denoted by the triangles
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Source:
+\series default
+ Druedahl and Jørgensen (2017), 
+\begin_inset Formula $G^{2}EGM$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Beg.-of-period value function:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\underline{v}_{t+1}(a_{t}) & =\sqrt{m_{t+1}}+\eta\max\left\{ m_{t+1}-\underline{m},0\right\} \\
+ & \text{where }m_{t+1}=(1+r)a_{t}+1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Derivative:
+\series default
+
+\begin_inset Formula 
+\[
+\underline{v}_{a}(a_{t})=\frac{1}{2}(1+r)m_{t+1}^{-\frac{1}{2}}+(1+r)\eta\boldsymbol{1}\left\{ m_{t+1}>\underline{m}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Budget constraint:
+\begin_inset Formula 
+\[
+a_{t}+c_{t}=(1+r)a_{t-1}+1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Next-period values
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename HANK-SAM-Simple/figs/upper_envelope_next_period.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Raw values of 
+\begin_inset Formula $c^{i_{a}}$
+\end_inset
+
+ and 
+\begin_inset Formula $v^{i_{a}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename HANK-SAM-Simple/figs/upper_envelope_raw.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Problem:
+\series default
+ Overlaps 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ not a function 
+\begin_inset Formula $m_{t}$
+\end_inset
+
+!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Result after upper envelope
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename HANK-SAM-Simple/figs/upper_envelope.pdf
+	width 100text%
 
 \end_inset
 
@@ -1289,7 +1584,9 @@ Typically require use of numerical optimizer or root-finder
 \begin_layout Itemize
 
 \series bold
-Druedahl (2021), 
+Druedahl (2021),
+\series default
+ 
 \begin_inset Quotes ald
 \end_inset
 
@@ -1297,9 +1594,7 @@ A Guide on Solving Non-Convex Consumption-Saving Models
 \begin_inset Quotes ard
 \end_inset
 
- 
-\series default
-(costly with extra states in 
+ (costly with extra states in 
 \begin_inset Formula $\overline{v}$
 \end_inset
 

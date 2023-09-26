@@ -553,7 +553,7 @@ Unknowns:
 Shock:
 \series default
  
-\begin_inset Formula $Z$
+\begin_inset Formula $\boldsymbol{Z}$
 \end_inset
 
  
@@ -590,7 +590,7 @@ Target equation system:
 \begin_layout Itemize
 
 \series bold
-Auxiliary model equations
+Auxiliary model equations:
 \series default
 
 \begin_inset Formula 
@@ -1549,7 +1549,7 @@ vspace{-3mm}
 
 \begin_inset Formula 
 \begin{align*}
-\text{cov}(dX_{t},dY_{t+k}) & =\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{i}dY_{s+k}^{i}
+\text{cov}(dX_{t},dY_{t+k}) & =\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dX_{s}^{i}dY_{s+k}^{i}
 \end{align*}
 
 \end_inset
@@ -1730,7 +1730,7 @@ same Jacobians
 \begin_inset Formula $\boldsymbol{G}_{\boldsymbol{U}}$
 \end_inset
 
-,
+, 
 \begin_inset Formula $\boldsymbol{G}$
 \end_inset
 
@@ -1833,7 +1833,7 @@ Union decision:
 
 \series bold
 Consumption function: 
-\begin_inset Formula $C_{t}^{hh}=C^{hh}\left(\{r_{s}^{a},\tau_{s},w_{s},\ell_{s},\chi_{s}\}_{s\geq t}\right)$
+\begin_inset Formula $C_{t}^{hh}=C^{hh}\left(\{r_{s}^{a},\tau_{s},w_{s},\ell_{s},\chi_{s}\}_{s\geq0}\right)$
 \end_inset
 
 
@@ -2438,7 +2438,7 @@ q_{t}B_{t}-A_{t}^{hh}\\
 \begin{align*}
 \text{Production: }w_{t} & =\Gamma_{t}\\
 Y_{t} & =\Gamma_{t}L_{t}\\
-\pi_{t} & =\frac{1+\pi_{t}^{w}}{\Gamma_{t}/\Gamma_{t-1}}-\pi_{t}\\
+\pi_{t} & =\frac{1+\pi_{t}^{w}}{\Gamma_{t}/\Gamma_{t-1}}-1\\
 \text{Central bank: }i_{t} & =(1+i_{t-1})^{\rho_{i}}\left((1+r_{ss})\left(1+\pi_{t}\right)^{\phi_{\pi}}\right)^{1-\rho_{i}}-1\text{ (forwards)}\\
 r_{t} & =\frac{1+i_{t}}{1+\pi_{t+1}}-1\\
 \text{Mutual fund: }q_{t} & =\frac{1+\delta q_{t+1}}{1+r_{t}}\text{ (backwards)}\\
