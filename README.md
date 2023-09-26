@@ -2,7 +2,7 @@
 
 *Mini-course taught at IIES in September 2023* 
 
-## Lecturs 
+## Lectures
 
 Course plan in `Lectures_IIES.pdf`
 
@@ -11,7 +11,7 @@ Course plan in `Lectures_IIES.pdf`
 * **Lecture 3**. Aggregate risk, linearized dynamics and analytical analysis 
 * **Lecture 4**. Examples: Open-Economy HANK + HANK with search-and-matching (SAM)
 
-## Lecturs 
+## Exercises
 
 1. Using the numerical methods in practice
 2. In Python using my [GEModelTools](https://github.com/NumEconCopenhagen/GEModelTools) package
