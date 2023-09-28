@@ -423,7 +423,11 @@ Policy analysis
 \end_layout
 
 \begin_layout Enumerate
-Endogenous idiosyncratic risk
+Life-cycle
+\end_layout
+
+\begin_layout Enumerate
+Endogenous idiosyncratic risk (time-varying)
 \end_layout
 
 \begin_layout Enumerate
@@ -435,7 +439,7 @@ taste shocks
 \end_layout
 
 \begin_layout Enumerate
-Bounded rationality
+Bounded rationality (non-FIRE)
 \end_layout
 
 \end_deeper
@@ -658,7 +662,169 @@ Discretion, commitment, timeless perspective (Dávila and Schaab, 2023)
 \end_layout
 
 \begin_layout Section
-Risk
+Life-cycle
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Households with life-cycle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Age:
+\series default
+ 
+\begin_inset Formula $h_{it}\in\{0,1,\dots,\#_{h}-1\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Death probabilities:
+\series default
+ 
+\begin_inset Formula $\delta\left(h_{it}\right)\in[0,1]$
+\end_inset
+
+, 
+\begin_inset Formula $\delta(\#_{h}-1)=1$
+\end_inset
+
+, 
+\begin_inset Formula $\zeta(j)=\int\boldsymbol{1}\{h_{it}=j\}d\boldsymbol{D}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Income profile:
+\series default
+ 
+\begin_inset Formula $\mathcal{Z}(z_{it},h_{it+1})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Household problem
+\series default
+, 
+\begin_inset Formula $\{r_{t},w_{t},q_{t}\}\rightarrow\{a_{it},b_{it},c_{it},\ell_{it}\}$
+\end_inset
+
+:
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+v_{0}(\beta_{i},h_{it},z_{it},a_{it-1}) & =\max_{c_{it}}u(c_{t})+\beta_{i}(1-\delta(h_{it}))\underline{v}_{t+1}\left(\beta_{i},h_{it+1},z_{it+1},a_{it}\right)\\
+\text{s.t. }\ell_{it} & =z_{it}\\
+a_{it} & =\begin{cases}
+(1+r_{t})q_{t}+w_{t}\ell_{it}-c_{it}+\Pi_{t} & \text{if }h_{it}=0\\
+(1+r_{t})a_{it-1}+w_{t}\ell_{it}-c_{it}+\Pi_{t} & \text{else }
+\end{cases}\\
+b_{it} & =\delta(h_{it})a_{it}\\
+h_{it+1} & =\begin{cases}
+0 & \text{with prob. }\delta(h_{it})\\
+h_{it}+1 & \text{else}
+\end{cases}\\
+z_{it+1} & \sim\mathcal{Z}(z_{it},h_{it+1}),\,\,\mathbb{E}\left[z_{it}\right]=1\\
+a_{it} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{q},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
+A_{t}-A_{t}^{hh}\\
+\zeta(0)q_{t}-B_{t-1}^{hh}\\
+\forall t\in\{0,1,\dots,T-1\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
+\end_inset
+
+ and
+\size footnotesize
+
+\begin_inset Formula 
+\begin{align*}
+L_{t} & =1\\
+A_{t} & =K_{t}\\
+r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+\boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+A_{t}^{hh} & =\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+ & \forall t\in\{0,1,\dots,T-1\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Endogenous idiosyncratic risk
 \end_layout
 
 \begin_layout Frame
@@ -973,8 +1139,7 @@ Transition matrix:
  
 \begin_inset Formula 
 \begin{align*}
-\Pi_{t,z} & =\Pi_{z}(u_{it-1},a_{it-1},\delta_{t},\lambda_{t}^{u,s})\\
- & =\Pi_{z}\left(\left\{ r_{\tau},w_{\tau},\tau_{\tau},\delta_{\tau},\lambda_{\tau}^{u,s}\right\} _{\tau\geq t}\right)
+\Pi_{t,z} & =\Pi_{z}\left(\left\{ r_{\tau},w_{\tau},\tau_{\tau},\delta_{\tau},\lambda_{\tau}^{u,s}\right\} _{\tau\geq t}\right)
 \end{align*}
 
 \end_inset
@@ -1172,7 +1337,8 @@ Generate candidate points:
 \begin{align*}
 w^{i_{a}} & =\beta\underline{v}_{t+1}(z^{i_{z}},a^{i_{a}})\\
 c^{i_{a}} & =u^{\prime-1}\left(\beta\underline{v}_{a,t+1}(z^{i_{z}},a^{i_{a}})\right)\\
-m^{i_{a}} & =a^{i_{a}}+c^{i_{a}}
+m^{i_{a}} & =a^{i_{a}}+c^{i_{a}}\\
+v^{i_{a}} & =u\left(c^{i_{a}}\right)+w^{i_{a}}
 \end{align*}
 
 \end_inset
@@ -1192,11 +1358,11 @@ Apply upper-envelope:
  
 \begin_inset Formula 
 \begin{align*}
-c^{\ast}(a^{i_{a-}}) & =\max_{i_{a}\in\{0,1,\dots\#_{a}-2\}}u\left(c^{i_{a-}}\right)+w^{i_{a-}}\text{ s.t.}\\
-m^{i_{a-}} & =(1+r_{t})a^{i_{a-}}+w_{t}z^{i_{z}}\in\left[m^{i_{a}},m^{i_{a+}}\right]\\
-c^{i_{a-}} & =\min\left\{ c^{i_{a}}+\frac{c^{i_{a}+1}-c^{i_{a}}}{m^{i_{a}+1}-m^{i_{a}}}\left(m^{i_{a-}}-m^{i_{a}}\right),m^{i_{a-}}\right\} \\
+c^{\ast}(a^{i_{a-}}) & =\max_{j\in\{0,1,\dots\#_{a}-2\}}u\left(c^{i_{a-}}\right)+w^{i_{a-}}\text{ s.t.}\\
+m^{i_{a-}} & =(1+r_{t})a^{i_{a-}}+w_{t}z^{i_{z}}\in\left[m^{j},m^{j+1}\right]\\
+c^{i_{a-}} & =\min\left\{ \text{interp }\left\{ m^{i_{a}}\right\} \rightarrow\left\{ c^{i_{a}}\right\} \text{ at }m^{i_{a-}},m^{i_{a-}}\right\} \\
 a^{i_{a-}} & =m^{i_{a-}}-c^{i_{a-}}\\
-w^{i_{a-}} & =w^{i_{a}}+\frac{w^{i_{a}+1}-w^{i_{a}}}{a^{i_{a}+1}-a^{i_{a}}}\left(a^{i_{a-}}-a^{i_{a}}\right)
+w^{i_{a-}} & =\text{interp }\left\{ a^{i_{a}}\right\} \rightarrow\left\{ w^{i_{a}}\right\} \text{ at }a^{i_{a-}}
 \end{align*}
 
 \end_inset
@@ -1282,7 +1448,11 @@ Problem:
 \series bold
 Largest value-of-choice:
 \series default
- Denoted by the triangles
+ Denoted by the 
+\emph on
+triangles
+\emph default
+
 \begin_inset ERT
 status open
 
@@ -1357,7 +1527,7 @@ Derivative:
 
 \begin_inset Formula 
 \[
-\underline{v}_{a}(a_{t})=\frac{1}{2}(1+r)m_{t+1}^{-\frac{1}{2}}+(1+r)\eta\boldsymbol{1}\left\{ m_{t+1}>\underline{m}\right\} 
+\underline{v}_{a,t+1}(a_{t})=\frac{1}{2}(1+r)m_{t+1}^{-\frac{1}{2}}+(1+r)\eta\boldsymbol{1}\left\{ m_{t+1}>\underline{m}\right\} 
 \]
 
 \end_inset
@@ -1533,7 +1703,7 @@ nesting
 
 \begin_inset Formula 
 \begin{align*}
-\overline{v}_{t}\left(\overline{x}_{t},d_{t},e_{t},m_{t}\right) & =\max_{c_{t}\in\left[0,m_{t}\right]}u(c_{t},d_{t},e_{t})+\beta\underline{v}_{t+1}\left(\underline{\Gamma}_{t}\left(x_{t},d_{t},a_{t}\right)\right)\\
+\overline{v}_{t}\left(\overline{x}_{t},d_{t},e_{t},m_{t}\right) & =\max_{c_{t}\in\left[0,m_{t}\right]}u(c_{t},d_{t},e_{t})+\beta\underline{v}_{t+1}\left(\underline{\Gamma}_{t}\left(\overline{x}_{t},d_{t},e_{t},a_{t}\right)\right)\\
  & \text{with }a_{t}=m_{t}-c_{t}\\
 v(x_{t}) & =\max_{d_{t}\in\Omega^{d}(x_{t})}\overline{v}_{t}\left(\overline{\Gamma}_{t}\left(x_{t},d_{t}\right)\right)\\
 \underline{v}_{t}\left(\underline{x}_{t}\right) & =\max_{e_{t}\in\Omega^{e}(\underline{x}_{t})}\mathbb{E}\left[v\left(\Gamma\left(\underline{x}_{t},e_{t}\right)\right)\,|\,\underline{x}_{t},e_{t}\right]
@@ -1577,7 +1747,7 @@ Combination of discrete and continuous choices
 \end_layout
 
 \begin_layout Enumerate
-Typically require use of numerical optimizer or root-finder
+Typically requires use of numerical optimizer or root-finder
 \end_layout
 
 \end_deeper
@@ -1599,6 +1769,401 @@ A Guide on Solving Non-Convex Consumption-Saving Models
 \end_inset
 
 )
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Non-FIRE
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivating example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+FIRE:
+\series default
+ 
+\emph on
+Full International Rational Expectations
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+IKC: 
+\begin_inset Formula $d\boldsymbol{Y}=\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}d\boldsymbol{Y}$
+\end_inset
+
+
+\series default
+ where 
+\series bold
+
+\begin_inset Formula $M_{t,s}=\frac{\partial C_{t}}{\partial Y_{s}}$
+\end_inset
+
+
+\series default
+ and similar for 
+\begin_inset Formula $\boldsymbol{M}^{r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Myopic behavior:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Agents 
+\emph on
+never
+\emph default
+ thinks about the future
+\end_layout
+
+\begin_layout Enumerate
+Agents gradually observe current aggregate variables
+\size small
+
+\begin_inset Formula 
+\[
+\boldsymbol{M}^{\text{myopic}}=\left[\begin{array}{cccc}
+M_{0,0} & 0 & 0 & \cdots\\
+M_{1,0} & M_{0,0} & 0 & \cdots\\
+M_{2,0} & M_{1,0} & M_{0,0} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\size default
+Consider 
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $M_{1,0}dY_{0}$
+\end_inset
+
+: Effect from past shock observed
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $M_{0,0}dY_{1}$
+\end_inset
+
+: Effect of unexpected change in period 1 
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sticky expectations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Sticky expectations:
+\series default
+ A fraction 
+\begin_inset Formula $1-\theta$
+\end_inset
+
+ updates expectations each period (from Carroll et.
+ al., 2020)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boldsymbol{M}^{\text{sticky}}=\left[\begin{array}{cccc}
+M_{0,0} & (1-\theta)M_{0,1} & (1-\theta)M_{0,2} & \cdots\\
+M_{1,0} & (1-\theta)M_{1,1}+\theta M_{0,0} & (1-\theta)M_{1,2}+\theta(1-\theta)M_{0,1} & \cdots\\
+M_{2,0} & (1-\theta)M_{2,1}+\theta M_{1,0} & \vdots & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $t=0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Non-updaters: 
+\begin_inset Formula $\theta M_{0,0}dY_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Updaters: 
+\begin_inset Formula $(1-\theta)\sum_{s\geq0}M_{0,s}dY_{s}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $t=1$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Ingoing updaters: 
+\begin_inset Formula $(1-\theta)\sum_{s\geq0}M_{1,s}dY_{s}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ingoing non-updaters: 
+\begin_inset Formula $\theta\left(M_{1,0}dY_{0}+M_{0,0}dY_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+New updaters: 
+\begin_inset Formula $\theta(1-\theta)\sum_{s\geq1}M_{0,s}dY_{s+1}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hump-shaped response to monetary policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/HumpsBumps_fig4.png
+	lyxscale 30
+	width 95text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\series bold
+Source:
+\series default
+ Auclert et.
+ al.
+ (2020), 
+\begin_inset Quotes ald
+\end_inset
+
+Micro Jumps, Macro Humps: Monetary Policy and Business Cycles in an Estimated
+ HANK Model
+\begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+UI extensions might be less powerful
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/UI_extensions.png
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\series bold
+Source:
+\series default
+ Bardóczy and Guerreiro (2020), 
+\begin_inset Quotes ald
+\end_inset
+
+Unemployment Insurance in Macroeconomic Stabilization with Imperfect Expectation
+s
+\begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -1705,6 +2270,19 @@ Druedahl, Ravn, Sunder-Plassmann, Sundram, Waldstrøm (2023),
 
 The Transmission of Foreign Demand Shocks
 \begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
 \end_inset
 
 
@@ -1988,8 +2566,8 @@ Domestic CES demand:
 
 \begin_inset Formula 
 \begin{align*}
-C_{H,t} & =(1-\alpha)\left(\frac{P_{H,t}}{P_{t}}\right)^{-\eta}C^{hh}\left(\left\{ Y_{t}^{hh}\right\} _{\tau\geq t}\right)\\
-C_{F,t} & =\alpha\left(\frac{E_{t}P_{t}^{\ast}}{P_{t}}\right)^{-\eta}C^{hh}\left(\left\{ Y_{t}^{hh}\right\} _{\tau\geq t}\right)\\
+C_{H,t} & =(1-\alpha)\left(\frac{P_{H,t}}{P_{t}}\right)^{-\eta}C^{hh}\left(\boldsymbol{Y}^{hh}\right)\\
+C_{F,t} & =\alpha\left(\frac{E_{t}P_{t}^{\ast}}{P_{t}}\right)^{-\eta}C^{hh}\left(\boldsymbol{Y}^{hh}\right)\\
 P_{t} & =\left[\alpha\left(E_{t}P_{t}^{\ast}\right)^{1-\eta}+\left(1-\alpha\right)P_{H,t}^{1-\eta}\right]^{\frac{1}{1-\eta}}
 \end{align*}
 
@@ -2043,7 +2621,7 @@ Armington demand for home goods:
 
 \begin_inset Formula 
 \begin{align*}
-C_{H,t}^{\ast} & =\alpha\left(\frac{P_{H,t}}{E_{t}P_{t}^{\ast}}\right)^{-\gamma}C^{\ast}
+C_{H,t}^{\ast} & =\alpha\left(\frac{P_{H,t}}{E_{t}P_{t}^{\ast}}\right)^{-\gamma}C_{t}^{\ast}
 \end{align*}
 
 \end_inset
@@ -2060,7 +2638,7 @@ Market clearing:
 \begin_inset Formula 
 \begin{align*}
 Y_{t} & =C_{H,t}+C_{H,t}^{\ast}\Rightarrow\\
-dY_{t} & =(1-\alpha)dC_{t}+\alpha C^{\ast}+\frac{\alpha}{1-\alpha}\chi dQ_{t}
+dY_{t} & =(1-\alpha)dC_{t}+\alpha C_{t}^{\ast}+\frac{\alpha}{1-\alpha}\chi dQ_{t}
 \end{align*}
 
 \end_inset
@@ -2134,6 +2712,18 @@ d\boldsymbol{C}=\underset{\text{multiplier}}{\underbrace{\boldsymbol{M}d\boldsym
 \end_layout
 
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
 
 \series bold
 Intertemporal Keynesian Cross:
@@ -2141,8 +2731,8 @@ Intertemporal Keynesian Cross:
 
 \begin_inset Formula 
 \begin{align*}
-d\boldsymbol{Y}= & \underset{\text{expenditure switching}}{\underbrace{\frac{\alpha}{1-\alpha}d\boldsymbol{Q}}}-\underset{\text{real income}}{\underbrace{\alpha\boldsymbol{M}d\boldsymbol{Q}}}+\underset{\text{multiplier}}{\underbrace{\left(1-\alpha\right)\boldsymbol{M}d\boldsymbol{Y}}}\\
-= & \mathcal{\boldsymbol{M}}\left(\frac{\alpha}{1-\alpha}\chi d\boldsymbol{Q}-\alpha\boldsymbol{M}d\boldsymbol{Q}\right)
+d\boldsymbol{Y} & =\underset{\text{expenditure switching}}{\underbrace{\frac{\alpha}{1-\alpha}d\boldsymbol{Q}}}-\underset{\text{real income}}{\underbrace{\alpha\boldsymbol{M}d\boldsymbol{Q}}}+\underset{\text{multiplier}}{\underbrace{\left(1-\alpha\right)\boldsymbol{M}d\boldsymbol{Y}}}\\
+ & =\mathcal{M}\left(\frac{\alpha}{1-\alpha}\chi d\boldsymbol{Q}-\alpha\boldsymbol{M}d\boldsymbol{Q}\right)
 \end{align*}
 
 \end_inset
@@ -2820,7 +3410,7 @@ where share of the month with UI is
 0 & \text{if }u_{it}=0\text{ or }\text{UI}_{it}=0\\
 1 & \text{else }\text{if }u_{it}<\overline{u}_{t}\\
 0 & \text{else if }u_{it}>\overline{u}_{t}+1\\
-\overline{u}_{t}-\left(u_{it}-1\right) & \text{else}
+\overline{u}_{t}-\left(u_{it}-1\right)\in[0,1] & \text{else}
 \end{cases}
 \end{align*}
 
@@ -2937,7 +3527,7 @@ Unemployed
 \begin{align*}
 u_{it} & =\begin{cases}
 0 & \text{with \lambda_{t}^{u,s}s(u_{it-1})}\\
-\min\left\{ \#_{u}-1,u_{it-1}+1\right\}  & \text{with }1-\lambda_{t}^{u,s}s(u_{it-1})
+\min\left\{ u_{it-1}+1,\#_{u}-1\right\}  & \text{with }1-\lambda_{t}^{u,s}s(u_{it-1})
 \end{cases},\,\text{UI}_{it}=\text{UI}_{it-1}
 \end{align*}
 
@@ -5033,10 +5623,18 @@ Unemployment insurance (UI) duration extensions,
 
 \begin_layout Itemize
 Retention subsidy
+\begin_inset Formula $_{t}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 Hiring subsidy
+\begin_inset Formula $_{t}$
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -5050,402 +5648,6 @@ Comparison:
 \[
 \frac{\sum_{t=0}^{\infty}d\text{output}_{t}}{\sum_{t=0}^{\infty}d\text{taxes}_{t}}
 \]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Non-FIRE
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Motivating example
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-FIRE:
-\series default
- 
-\emph on
-Full International Rational Expectations
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-IKC: 
-\begin_inset Formula $d\boldsymbol{Y}=\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}d\boldsymbol{Y}$
-\end_inset
-
-
-\series default
- where 
-\series bold
-
-\begin_inset Formula $M_{t,s}=\frac{\partial C_{t}}{\partial Y_{s}}$
-\end_inset
-
-
-\series default
- and similar for 
-\begin_inset Formula $\boldsymbol{M}^{r}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Myopic behavior:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Agents 
-\emph on
-never
-\emph default
- thinks about the future
-\end_layout
-
-\begin_layout Enumerate
-Agents gradually observe current aggregate variables
-\size small
-
-\begin_inset Formula 
-\[
-\boldsymbol{M}^{\text{myopic}}=\left[\begin{array}{cccc}
-M_{0,0} & 0 & 0 & \cdots\\
-M_{1,0} & M_{0,0} & 0 & \cdots\\
-M_{2,0} & M_{1,0} & M_{0,0} & \cdots\\
-\vdots & \vdots & \vdots & \ddots
-\end{array}\right]
-\]
-
-\end_inset
-
-
-\size default
-Consider 
-\begin_inset Formula $t=1$
-\end_inset
-
-: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Formula $M_{1,0}dY_{0}$
-\end_inset
-
-: Effect from past shock observed
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $M_{0,0}dY_{1}$
-\end_inset
-
-: Effect of unexpected change in period 1 
-\end_layout
-
-\end_deeper
-\end_deeper
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Sticky expectations
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Sticky expectations:
-\series default
- A fraction 
-\begin_inset Formula $1-\theta$
-\end_inset
-
- updates expectations each period (from Carroll et.
- al., 2020)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\size small
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-3mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\boldsymbol{M}^{\text{sticky}}=\left[\begin{array}{cccc}
-M_{0,0} & (1-\theta)M_{0,1} & (1-\theta)M_{0,2} & \cdots\\
-M_{1,0} & (1-\theta)M_{1,1}+\theta M_{0,0} & (1-\theta)M_{1,2}+\theta(1-\theta)M_{0,1} & \cdots\\
-M_{2,0} & (1-\theta)M_{2,1}+\theta M_{1,0} & \vdots & \cdots\\
-\vdots & \vdots & \vdots & \ddots
-\end{array}\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Consider 
-\begin_inset Formula $t=1$
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Enumerate
-Did 
-\emph on
-not 
-\emph default
-update in 
-\begin_inset Formula $t=1$
-\end_inset
-
-: 
-\begin_inset Formula $\theta\left(M_{1,0}dY_{0}+M_{0,0}dY_{1}\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Did update in 
-\begin_inset Formula $t=0$
-\end_inset
-
-: 
-\begin_inset Formula $(1-\theta)\sum_{s\geq0}M_{1,s}dY_{s}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Extra from updaters in 
-\begin_inset Formula $t=1$
-\end_inset
-
-: 
-\begin_inset Formula $\theta(1-\theta)\sum_{s\geq1}M_{0,s}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\emph on
-Many other possible forms of expectation formation
-\series bold
-\emph default
- 
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Hump-shaped response to monetary policy
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Graphics
-	filename figs/HumpsBumps_fig4.png
-	lyxscale 30
-	width 95text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-footnotesize
-\end_layout
-
-\end_inset
-
-
-\series bold
-Source:
-\series default
- Auclert et.
- al.
- (2020), 
-\begin_inset Quotes ald
-\end_inset
-
-Micro Jumps, Macro Humps: Monetary Policy and Business Cycles in an Estimated
- HANK Model
-\begin_inset Quotes ard
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-UI extensions might be less powerful
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Graphics
-	filename figs/UI_extensions.png
-	lyxscale 30
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-footnotesize
-\end_layout
-
-\end_inset
-
-
-\series bold
-Source:
-\series default
- Bardóczy and Guerreiro (2020), 
-\begin_inset Quotes ald
-\end_inset
-
-Unemployment Insurance in Macroeconomic Stabilization with Imperfect Expectation
-s
-\begin_inset Quotes ard
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
 
 \end_inset
 
@@ -5487,6 +5689,10 @@ Today:
 \begin_deeper
 \begin_layout Enumerate
 Policies (shocks, targets, rule, optimal)
+\end_layout
+
+\begin_layout Enumerate
+Life-cycle (age, mortality, income profile) 
 \end_layout
 
 \begin_layout Enumerate
