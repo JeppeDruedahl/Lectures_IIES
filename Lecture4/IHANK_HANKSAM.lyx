@@ -694,7 +694,7 @@ Age:
 \begin_layout Itemize
 
 \series bold
-Death probabilities:
+Mortality:
 \series default
  
 \begin_inset Formula $\delta\left(h_{it}\right)\in[0,1]$
@@ -705,7 +705,7 @@ Death probabilities:
 \end_inset
 
 , 
-\begin_inset Formula $\zeta(j)=\int\boldsymbol{1}\{h_{it}=j\}d\boldsymbol{D}_{t}$
+\begin_inset Formula $\zeta(j)=\int\boldsymbol{1}\{h_{it}=j\}d\boldsymbol{D}_{ss}$
 \end_inset
 
 
@@ -2638,7 +2638,7 @@ Market clearing:
 \begin_inset Formula 
 \begin{align*}
 Y_{t} & =C_{H,t}+C_{H,t}^{\ast}\Rightarrow\\
-dY_{t} & =(1-\alpha)dC_{t}+\alpha C_{t}^{\ast}+\frac{\alpha}{1-\alpha}\chi dQ_{t}
+dY_{t} & =(1-\alpha)dC_{t}+\alpha dC_{t}^{\ast}+\frac{\alpha}{1-\alpha}\chi dQ_{t}
 \end{align*}
 
 \end_inset
@@ -3808,9 +3808,9 @@ final goods price inflation
 
 
 \begin_inset Formula 
-\begin{eqnarray*}
-1-\epsilon+\epsilon P_{t}^{X} & = & \phi(\Pi_{t}-1)\Pi_{t}-\phi\beta^{\text{firm}}\mathbb{E}_{t}\left[(\Pi_{t+1}-1)\Pi_{t+1}\frac{Y_{t+1}}{Y_{t}}\right]
-\end{eqnarray*}
+\[
+1-\epsilon+\epsilon P_{t}^{X}=\phi(\Pi_{t}-1)\Pi_{t}-\phi\beta^{\text{firm}}\mathbb{E}_{t}\left[(\Pi_{t+1}-1)\Pi_{t+1}\frac{Y_{t+1}}{Y_{t}}\right]
+\]
 
 \end_inset
 
@@ -5704,16 +5704,16 @@ Discrete choices with taste shocks (upper envelope, non-convex)
 \end_layout
 
 \begin_layout Enumerate
-I-HANK (real income channel, contractionary, exchange rate and foreign demand
- shocks, regional/spatial dynamics)
+Bounded rationality (manipulation of Jacobian, myopic, sticky)
+\end_layout
+
+\begin_layout Enumerate
+I-HANK (real income channel, contractionary depreciation, exchange rate
+ and foreign demand shocks, regional dynamics)
 \end_layout
 
 \begin_layout Enumerate
 HANK-SAM (labor market dynamics, fiscal policy)
-\end_layout
-
-\begin_layout Enumerate
-Bounded rationality (manipulation of Jacobian, myopic, sticky)
 \end_layout
 
 \end_deeper
